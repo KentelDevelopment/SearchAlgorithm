@@ -5,9 +5,27 @@
 import requests
 from bs4 import BeautifulSoup
 import random
+import os
 from cryptography.fernet import Fernet
 
+os.system("clear")
+
+fileSearch = open("results.txt","r").read()
+
+oldValue = len(fileSearch.split("\n"))
+
+
+
 while True:
+	os.system("clear")
+	fileSearch2 = open("results.txt","r").read()
+
+	newValue = len(fileSearch2.split("\n"))
+	print("===================Kentel======================")
+	print("Old count(before run):{}".format(oldValue))
+	print("Total Data Count(now):{}".format(newValue))
+	print("New Data(while running this session):{}".format(newValue-oldValue))
+	print("===============================================")
 	randomWiki = requests.get("https://en.wikipedia.org/wiki/Special:Random")
 	soup = BeautifulSoup(randomWiki.content,features="lxml")
 	text = soup.findAll("html")[0].get_text()

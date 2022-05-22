@@ -1,0 +1,9 @@
+<form action="" method="POST">
+	<input name="search" placeholder="Search"><button>Search</button><br><br>
+	{% if results %}
+		{% for r in results%}
+			<a href="{{r["url"].split("&")[0]}}">{{r["title"]}}</a><br>
+			<a href="{{r["url"].split("&")[0]}}" style="color:green">{{r["url"].split("&")[0]}}</a><br><br>
+		{% endfor %}
+	{% endif %}
+</form>
